@@ -126,7 +126,7 @@ class RedBlackTree:
         if z.left == self.TNULL:
             x = z.right
             self.__rb_transplant(z, z.right)
-        elif (z.right == self.TNULL):
+        elif z.right is self.TNULL:
             x = z.left
             self.__rb_transplant(z, z.left)
         else:
@@ -194,13 +194,13 @@ class RedBlackTree:
         if node != self.TNULL:
             sys.stdout.write(indent)
             if last:
-                sys.stdout.write("R----")
+                sys.stdout.write("|RAIZ|*****")
                 indent += "     "
             else:
-                sys.stdout.write("F----")
-                indent += "|    "
+                sys.stdout.write("|FOLHA|*****")
+                indent += "|*|    "
 
-            s_color = "RED" if node.color == 1 else "BLACK"
+            s_color = "VERMELHA" if node.color == 1 else "PRETA"
             print (str(node.data) + "(" + s_color + ")")
             self.__print_helper(node.left, indent, False)
             self.__print_helper(node.right, indent, True)
